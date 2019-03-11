@@ -1,15 +1,21 @@
 import test from 'ava';
-import m from './';
+import pWaterfall from '.';
 
-test(async t => {
+test('main', async t => {
 	const input = [
-		async prev => prev + 1,
-		prev => prev + 2,
-		async prev => prev + 3
+		async previousValue => previousValue + 1,
+		previousValue => previousValue + 2,
+		async previousValue => previousValue + 3
 	];
 
-	t.is(await m(input, 0), 6);
+	t.is(await pWaterfall(input, 0), 6);
+});
 
-	const fixtureErr = new Error('fixture');
-	await t.throws(m([async () => Promise.reject(fixtureErr)]), fixtureErr.message);
+test('throws when one of the input functions rejects', async t => {
+	const fixtureError = new Error('fixture');
+
+	await t.throwsAsync(
+		pWaterfall([() => Promise.reject(fixtureError)]),
+		fixtureError.message
+	);
 });

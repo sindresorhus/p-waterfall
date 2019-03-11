@@ -37,7 +37,7 @@ Returns a `Promise` that is fulfilled when all promises returned from calling th
 
 Type: `Iterable<Function>`
 
-Functions are expected to return a value. If a Promise is returned, it's awaited before continuing with the next task.
+Functions are expected to return a value. If a `Promise` is returned, it's awaited before continuing with the next task.
 
 #### initialValue
 
