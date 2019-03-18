@@ -1,17 +1,31 @@
 export type Task<ValueType, ReturnType> = (
 	previousValue: ValueType
 ) => ReturnType | PromiseLike<ReturnType>;
-export type InitialTask<ReturnType> = () =>
-	| ReturnType
-	| PromiseLike<ReturnType>;
+
+export type InitialTask<ReturnType> = () => ReturnType | PromiseLike<ReturnType>;
 
 /**
- * Run promise-returning & async functions in series, each passing its result to the next.
- *
- * @param tasks - Functions are expected to return a value. If a `Promise` is returned, it's awaited before continuing with the next task.
- * @param initialValue - Value to use as `previousValue` in the first task.
- * @returns Resolves when all promises returned from calling the functions in `tasks` are fulfilled, or rejects if any of the promises reject. The fulfilled value is the value returned from the last task.
- */
+Run promise-returning & async functions in series, each passing its result to the next.
+
+@param tasks - Functions are expected to return a value. If a `Promise` is returned, it's awaited before continuing with the next task.
+@param initialValue - Value to use as `previousValue` in the first task.
+@returns Resolves when all promises returned from calling the functions in `tasks` are fulfilled, or rejects if any of the promises reject. The fulfilled value is the value returned from the last task.
+
+@example
+```
+import pWaterfall from 'p-waterfall';
+
+(async () => {
+	const tasks = [
+		initialValue => getEmoji(initialValue),
+		previousValue => `I ❤️ ${previousValue}`
+	];
+
+	console.log(await pWaterfall(tasks, 'unicorn'));
+	//=> 'I ❤️ 🦄'
+})();
+```
+*/
 export default function pWaterfall<ReturnType>(
 	tasks: [InitialTask<ReturnType>]
 ): Promise<ReturnType>;
