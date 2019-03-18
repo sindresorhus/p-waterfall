@@ -1,4 +1,8 @@
 'use strict';
 const pReduce = require('p-reduce');
 
-module.exports = (iterable, initVal) => pReduce(iterable, (prev, fn) => fn(prev), initVal);
+const pWaterfall = (iterable, initialValue) =>
+	pReduce(iterable, (previousValue, fn) => fn(previousValue), initialValue);
+
+module.exports = pWaterfall;
+module.exports.default = pWaterfall;
