@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save p-waterfall
+$ npm install p-waterfall
 ```
 
 
@@ -15,15 +15,15 @@ $ npm install --save p-waterfall
 ```js
 const pWaterfall = require('p-waterfall');
 
-const tasks = [
-	initialValue => getEmoji(initialValue),
-	previousValue => `I ❤️ ${previousValue}`
-];
+(async () => {
+	const tasks = [
+		initialValue => getEmoji(initialValue),
+		previousValue => `I ❤️ ${previousValue}`
+	];
 
-pWaterfall(tasks, 'unicorn').then(finalValue => {
-	console.log(finalValue);
+	console.log(await pWaterfall(tasks, 'unicorn'));
 	//=> 'I ❤️ 🦄'
-});
+})();
 ```
 
 
@@ -41,7 +41,7 @@ Functions are expected to return a value. If a `Promise` is returned, it's await
 
 #### initialValue
 
-Type: `any`
+Type: `unknown`
 
 Value to use as `previousValue` in the first task.
 
