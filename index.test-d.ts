@@ -1,5 +1,5 @@
-import {expectType} from 'tsd-check';
-import pWaterfall from '.';
+import {expectType} from 'tsd';
+import pWaterfall = require('.');
 
 expectType<Promise<string>>(pWaterfall([() => `I ❤️ unicorn`]));
 expectType<Promise<boolean>>(
