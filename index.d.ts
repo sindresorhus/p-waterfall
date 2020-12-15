@@ -29,24 +29,26 @@ declare const pWaterfall: {
 	})();
 	```
 	*/
-	<ReturnType>(tasks: [pWaterfall.InitialTask<ReturnType>]): Promise<
-		ReturnType
-	>;
+	<ReturnType>(
+		tasks: readonly [
+			pWaterfall.InitialTask<ReturnType>
+		]
+	): Promise<ReturnType>;
 	<ValueType1, ReturnType>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.InitialTask<ValueType1>,
 			pWaterfall.Task<ValueType1, ReturnType>
 		]
 	): Promise<ReturnType>;
 	<ValueType1, ValueType2, ReturnType>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.InitialTask<ValueType1>,
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ReturnType>
 		]
 	): Promise<ReturnType>;
 	<ValueType1, ValueType2, ValueType3, ReturnType>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.InitialTask<ValueType1>,
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
@@ -54,7 +56,7 @@ declare const pWaterfall: {
 		]
 	): Promise<ReturnType>;
 	<ValueType1, ValueType2, ValueType3, ValueType4, ReturnType>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.InitialTask<ValueType1>,
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
@@ -63,7 +65,7 @@ declare const pWaterfall: {
 		]
 	): Promise<ReturnType>;
 	<ValueType1, ValueType2, ValueType3, ValueType4, ValueType5, ReturnType>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.InitialTask<ValueType1>,
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
@@ -81,7 +83,7 @@ declare const pWaterfall: {
 		ValueType6,
 		ReturnType
 	>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.InitialTask<ValueType1>,
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
@@ -101,7 +103,7 @@ declare const pWaterfall: {
 		ValueType7,
 		ReturnType
 	>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.InitialTask<ValueType1>,
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
@@ -114,18 +116,20 @@ declare const pWaterfall: {
 	): Promise<ReturnType>;
 
 	<ValueType1, ReturnType>(
-		tasks: [pWaterfall.Task<ValueType1, ReturnType>],
+		tasks: readonly [
+			pWaterfall.Task<ValueType1, ReturnType>
+		],
 		initialValue: ValueType1
 	): Promise<ReturnType>;
 	<ValueType1, ValueType2, ReturnType>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ReturnType>
 		],
 		initialValue: ValueType1
 	): Promise<ReturnType>;
 	<ValueType1, ValueType2, ValueType3, ReturnType>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
 			pWaterfall.Task<ValueType3, ReturnType>
@@ -133,7 +137,7 @@ declare const pWaterfall: {
 		initialValue: ValueType1
 	): Promise<ReturnType>;
 	<ValueType1, ValueType2, ValueType3, ValueType4, ReturnType>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
 			pWaterfall.Task<ValueType3, ValueType4>,
@@ -142,7 +146,7 @@ declare const pWaterfall: {
 		initialValue: ValueType1
 	): Promise<ReturnType>;
 	<ValueType1, ValueType2, ValueType3, ValueType4, ValueType5, ReturnType>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
 			pWaterfall.Task<ValueType3, ValueType4>,
@@ -160,7 +164,7 @@ declare const pWaterfall: {
 		ValueType6,
 		ReturnType
 	>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
 			pWaterfall.Task<ValueType3, ValueType4>,
@@ -180,7 +184,7 @@ declare const pWaterfall: {
 		ValueType7,
 		ReturnType
 	>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
 			pWaterfall.Task<ValueType3, ValueType4>,
@@ -202,7 +206,7 @@ declare const pWaterfall: {
 		ValueType8,
 		ReturnType
 	>(
-		tasks: [
+		tasks: readonly [
 			pWaterfall.Task<ValueType1, ValueType2>,
 			pWaterfall.Task<ValueType2, ValueType3>,
 			pWaterfall.Task<ValueType3, ValueType4>,

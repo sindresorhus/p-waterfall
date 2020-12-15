@@ -180,3 +180,14 @@ expectType<Promise<unknown>>(
 		'unicorn'
 	)
 );
+
+const tasks1 = [() => `I ❤️ unicorn`] as const;
+expectType<Promise<string>>(pWaterfall(tasks1));
+
+const tasks2 = [
+	() => `I ❤️ unicorn`,
+	(string: string) => true,
+	(boolean: boolean) => 1,
+	(number: number) => null
+] as const;
+expectType<Promise<null>>(pWaterfall(tasks2));
