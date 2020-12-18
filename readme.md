@@ -1,14 +1,12 @@
-# p-waterfall [![Build Status](https://travis-ci.org/sindresorhus/p-waterfall.svg?branch=master)](https://travis-ci.org/sindresorhus/p-waterfall)
+# p-waterfall
 
 > Run promise-returning & async functions in series, each passing its result to the next
-
 
 ## Install
 
 ```
 $ npm install p-waterfall
 ```
-
 
 ## Usage
 
@@ -25,7 +23,6 @@ const pWaterfall = require('p-waterfall');
 	//=> 'I ❤️ 🦄'
 })();
 ```
-
 
 ## API
 
@@ -45,13 +42,11 @@ Type: `unknown`
 
 Value to use as `previousValue` in the first task.
 
-
 ## Related
 
 - [p-series](https://github.com/sindresorhus/p-series) - Run promise-returning & async functions in series
 - [p-each-series](https://github.com/sindresorhus/p-each-series) - Iterate over promises serially
 - [More…](https://github.com/sindresorhus/promise-fun)
-
 
 ---
 
