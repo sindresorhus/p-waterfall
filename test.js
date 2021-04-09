@@ -1,5 +1,5 @@
 import test from 'ava';
-import pWaterfall from '.';
+import pWaterfall from './index.js';
 
 test('main', async t => {
 	const input = [
@@ -16,6 +16,6 @@ test('throws when one of the input functions rejects', async t => {
 
 	await t.throwsAsync(
 		pWaterfall([() => Promise.reject(fixtureError)]),
-		fixtureError.message
+		{message: fixtureError.message}
 	);
 });

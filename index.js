@@ -1,9 +1,5 @@
-'use strict';
-const pReduce = require('p-reduce');
+import pReduce from 'p-reduce';
 
-const pWaterfall = (iterable, initialValue) =>
-	pReduce(iterable, (previousValue, fn) => fn(previousValue), initialValue);
-
-module.exports = pWaterfall;
-// TODO: Remove this for the next major release
-module.exports.default = pWaterfall;
+export default async function pWaterfall(iterable, initialValue) {
+	return pReduce(iterable, (previousValue, function_) => function_(previousValue), initialValue);
+}

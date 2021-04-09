@@ -11,17 +11,15 @@ $ npm install p-waterfall
 ## Usage
 
 ```js
-const pWaterfall = require('p-waterfall');
+import pWaterfall from 'p-waterfall';
 
-(async () => {
-	const tasks = [
-		initialValue => getEmoji(initialValue),
-		previousValue => `I ❤️ ${previousValue}`
-	];
+const tasks = [
+	initialValue => getEmoji(initialValue),
+	previousValue => `I ❤️ ${previousValue}`
+];
 
-	console.log(await pWaterfall(tasks, 'unicorn'));
-	//=> 'I ❤️ 🦄'
-})();
+console.log(await pWaterfall(tasks, 'unicorn'));
+//=> 'I ❤️ 🦄'
 ```
 
 ## API
