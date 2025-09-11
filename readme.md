@@ -4,8 +4,8 @@
 
 ## Install
 
-```
-$ npm install p-waterfall
+```sh
+npm install p-waterfall
 ```
 
 ## Usage
@@ -40,20 +40,22 @@ Type: `unknown`
 
 Value to use as `previousValue` in the first task.
 
+## TypeScript
+
+Use [`as const`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions) to improve type inference when defining task arrays outside of `pWaterfall()`:
+
+```ts
+const tasks = [
+	() => 'unicorn',
+	previousValue => `I ❤️ ${previousValue}`,
+	string => string.length
+] as const;
+
+await pWaterfall(tasks); // Returns a `Promise<number>` (the return type of the last task)
+```
+
 ## Related
 
 - [p-series](https://github.com/sindresorhus/p-series) - Run promise-returning & async functions in series
 - [p-each-series](https://github.com/sindresorhus/p-each-series) - Iterate over promises serially
 - [More…](https://github.com/sindresorhus/promise-fun)
-
----
-
-<div align="center">
-	<b>
-		<a href="https://tidelift.com/subscription/pkg/npm-p-waterfall?utm_source=npm-p-waterfall&utm_medium=referral&utm_campaign=readme">Get professional support for this package with a Tidelift subscription</a>
-	</b>
-	<br>
-	<sub>
-		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
-	</sub>
-</div>

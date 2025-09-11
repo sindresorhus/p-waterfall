@@ -67,7 +67,7 @@ expectType<Promise<symbol>>(
 expectType<Promise<string>>(
 	pWaterfall([previousValue => `I ❤️ ${previousValue}`], 'unicorn')
 );
-expectType<Promise<true>>(
+expectType<Promise<boolean>>(
 	pWaterfall(
 		[previousValue => `I ❤️ ${previousValue}`, (string: string) => true],
 		'unicorn'
@@ -192,3 +192,11 @@ const tasks2 = [
 	(number: number) => null
 ] as const;
 expectType<Promise<null>>(pWaterfall(tasks2));
+
+// Example showing the benefit of as const for type inference
+const tasksWithConst = [
+	() => 'unicorn',
+	(emoji: string) => `I ❤️ ${emoji}`,
+	(message: string) => message.length
+] as const;
+expectType<Promise<number>>(pWaterfall(tasksWithConst));

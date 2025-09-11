@@ -1,4 +1,3 @@
-/* eslint-disable import/export */
 export type Task<ValueType, ReturnType> = (
 	previousValue: ValueType
 ) => ReturnType | PromiseLike<ReturnType>;
@@ -23,6 +22,18 @@ const tasks = [
 
 console.log(await pWaterfall(tasks, 'unicorn'));
 //=> 'I ❤️ 🦄'
+```
+
+**Tip:** Use [`as const`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions) to improve type inference when defining task arrays outside of `pWaterfall()`:
+
+```
+const tasks = [
+	() => 'unicorn',
+	previousValue => `I ❤️ ${previousValue}`,
+	string => string.length
+] as const;
+
+await pWaterfall(tasks); // Returns a `Promise<number>` (the return type of the last task)
 ```
 */
 export default function pWaterfall<ReturnType>(
